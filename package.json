@@ -1,0 +1,70 @@
+{
+	"name": "resolve-pkg-maps",
+	"version": "0.0.0-semantic-release",
+	"description": "Resolve package.json exports & imports maps",
+	"keywords": [
+		"node.js",
+		"package.json",
+		"exports",
+		"imports"
+	],
+	"license": "MIT",
+	"repository": "privatenumber/resolve-pkg-maps",
+	"funding": "https://github.com/privatenumber/resolve-pkg-maps?sponsor=1",
+	"author": {
+		"name": "Hiroki Osame",
+		"email": "hiroki.osame@gmail.com"
+	},
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.cts",
+	"exports": {
+		"require": {
+			"types": "./dist/index.d.cts",
+			"default": "./dist/index.cjs"
+		},
+		"import": {
+			"types": "./dist/index.d.mts",
+			"default": "./dist/index.mjs"
+		}
+	},
+	"imports": {
+		"#resolve-pkg-maps": {
+			"types": "./src/index.ts",
+			"development": "./src/index.ts",
+			"default": "./dist/index.mjs"
+		}
+	},
+	"scripts": {
+		"build": "pkgroll --target=node12.19 --minify",
+		"lint": "eslint --cache .",
+		"type-check": "tsc --noEmit",
+		"test": "pnpm build && tsx tests",
+		"dev": "tsx watch --conditions=development tests",
+		"prepack": "pnpm build && clean-pkg-json"
+	},
+	"devDependencies": {
+		"@pvtnbr/eslint-config": "^0.33.0",
+		"@types/node": "^18.11.11",
+		"clean-pkg-json": "^1.2.0",
+		"eslint": "^8.29.0",
+		"execa": "^6.1.0",
+		"fs-fixture": "^1.2.0",
+		"manten": "^0.6.0",
+		"pkgroll": "^1.8.0",
+		"resolve.exports": "^1.1.0",
+		"tsx": "^3.12.1",
+		"typescript": "^4.9.4"
+	},
+	"eslintConfig": {
+		"extends": "@pvtnbr",
+		"rules": {
+			"unicorn/no-array-reduce": "off",
+			"no-prototype-builtins": "off"
+		}
+	}
+}
