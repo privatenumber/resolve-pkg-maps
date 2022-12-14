@@ -1,6 +1,6 @@
 # resolve-pkg-maps
 
-Utils to resolve `package.json` subpath & conditional [`exports`](https://nodejs.org/api/packages.html#exports)/[`imports`](https://nodejs.org/api/packages.html#imports) in resolvers.
+Utils to resolve `package.json` subpath & conditional [`exports`](https://nodejs.org/api/packages.html#exports)/[`imports`](https://nodejs.org/api/packages.html#imports) maps in resolvers.
 
 Implements the [ESM resolution algorithm](https://nodejs.org/api/esm.html#resolver-algorithm-specification). Tested [against Node.js](/tests/) for accuracy.
 
@@ -9,6 +9,8 @@ Implements the [ESM resolution algorithm](https://nodejs.org/api/esm.html#resolv
 ## Usage
 
 ### Resolving `exports`
+
+Let's say you want to resolve the subpath export `reverse` in a package called `utils`.
 
 _utils/package.json_
 ```json5
@@ -38,6 +40,8 @@ const resolvedPaths: string[] = resolveExports(
 ```
 
 ### Resolving `imports`
+
+Let's say you want to resolve the subpath import `#supports-color` in the current package.
 
 _package.json_
 ```json5
