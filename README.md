@@ -191,7 +191,7 @@ Not all conditions in the array need to be met to resolve the request. It just n
 }
 ```
 
-Node.js's implementation [picks the first valid path (without attempting to resolve it)](https://github.com/nodejs/node/issues/44282#issuecomment-1220151715) and throws an error if it can't be resolved. Node.js's fallback array is designed for [forward compatibility with features](https://github.com/jkrems/proposal-pkg-exports/#:~:text=providing%20forwards%20compatiblitiy%20for%20new%20features) (e.g. protocols) that can be immediately/inexpensively validated:
+Node.js's implementation [picks the first valid path (without attempting to resolve it)](https://github.com/nodejs/node/issues/44282#issuecomment-1220151715) and throws an error if it can't be resolved. Node.js's fallback array is designed for [forward compatibility with features](https://github.com/jkrems/proposal-pkg-exports/#:~:text=providing%20forwards%20compatiblitiy%20for%20new%20features) (e.g. protocols) that can be syntactically validated:
 
 ```json5
 {
@@ -204,6 +204,29 @@ Node.js's implementation [picks the first valid path (without attempting to reso
 However, [Webpack](https://webpack.js.org/guides/package-exports/#alternatives) and [TypeScript](https://github.com/microsoft/TypeScript/blob/71e852922888337ef51a0e48416034a94a6c34d9/src/compiler/moduleSpecifiers.ts#L695) have deviated from this behavior and attempts to resolve the next path if a path cannot be resolved.
 
 By returning an array of matched paths instead of just the first one, the user can decide which behavior to adopt.
+
+#### Conditions in the array are resolved
+Even though it returns an array of results, the conditions inside the array are resolved and non-matching conditions are filtered out.
+
+For example, given the following exports:
+
+```json5
+{
+    "exports": {
+        "./path": [{ "node": "./node.js" }, "./browser.js"]
+    }
+}
+```
+
+Resolving with condition `node`:
+```json5
+["./node.js", "./browser.js"]
+```
+
+Resolving with condition `browser`:
+```json5
+["./browser.js"]
+```
 
 ### How is it different from [`resolve.exports`](https://github.com/lukeed/resolve.exports)?
 
