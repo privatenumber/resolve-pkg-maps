@@ -4,6 +4,8 @@ Utils to resolve `package.json` subpath & conditional [`exports`](https://nodejs
 
 Implements the [ESM resolution algorithm](https://nodejs.org/api/esm.html#resolver-algorithm-specification). Tested [against Node.js](/tests/) for accuracy.
 
+→ [Try it out online on StackBlitz](https://stackblitz.com/edit/node-pbjnfn?file=exports.ts)
+
 <sub>Support this project by ⭐️ starring and sharing it. [Follow me](https://github.com/privatenumber) to see what other cool projects I'm working on! ❤️</sub>
 
 ## Usage
