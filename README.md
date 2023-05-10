@@ -8,6 +8,11 @@ Implements the [ESM resolution algorithm](https://nodejs.org/api/esm.html#resolv
 
 <sub>Support this project by ⭐️ starring and sharing it. [Follow me](https://github.com/privatenumber) to see what other cool projects I'm working on! ❤️</sub>
 
+## Install
+```sh
+npm i resolve-pkg-maps
+```
+
 ## Usage
 
 ### Resolving `exports`
