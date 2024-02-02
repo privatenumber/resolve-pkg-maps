@@ -1,4 +1,4 @@
-# resolve-pkg-maps
+# resolve-pkg-maps <a href="https://npm.im/resolve-pkg-maps"><img src="https://badgen.net/npm/v/resolve-pkg-maps"></a> <a href="https://npm.im/resolve-pkg-maps"><img src="https://badgen.net/npm/dm/resolve-pkg-maps"></a> <a href="https://packagephobia.now.sh/result?p=resolve-pkg-maps"><img src="https://packagephobia.now.sh/badge?p=resolve-pkg-maps"></a>
 
 Utils to resolve `package.json` subpath & conditional [`exports`](https://nodejs.org/api/packages.html#exports)/[`imports`](https://nodejs.org/api/packages.html#imports) maps in resolvers.
 
