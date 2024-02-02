@@ -248,3 +248,9 @@ Resolving with condition `browser`:
 - Neither resolvers rely on a file-system
 
 This package also addresses many of the bugs in `resolve.exports`, demonstrated in [this test](/tests/exports/compare-resolve.exports.ts).
+
+
+## Related
+
+### [pkg-entry-points](https://github.com/privatenumber/pkg-entry-points)
+Get all entry-points for an npm package. Supports the exports field to expand subpaths and condition combinations.
