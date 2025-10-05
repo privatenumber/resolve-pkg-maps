@@ -7,6 +7,5 @@ export default testSuite(({ describe }) => {
 		runTestSuite(import('./star.js'));
 		runTestSuite(import('./conditions.js'));
 		runTestSuite(import('./fallback-array.js'));
-		runTestSuite(import('./compare-resolve.exports.js'));
 	});
 });

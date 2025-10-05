@@ -56,7 +56,6 @@
 		"fs-fixture": "^1.2.0",
 		"manten": "^0.6.0",
 		"pkgroll": "^1.8.0",
-		"resolve.exports": "^1.1.0",
 		"tsx": "^3.12.1",
 		"typescript": "^4.9.4"
 	},

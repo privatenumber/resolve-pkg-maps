@@ -233,23 +233,6 @@ Resolving with condition `browser`:
 ["./browser.js"]
 ```
 
-### How is it different from [`resolve.exports`](https://github.com/lukeed/resolve.exports)?
-
-`resolve.exports` only resolves `exports`, whereas this package resolves both `exports` & `imports`. This comparison will only cover resolving `exports`.
-
-- Despite it's name, `resolve.exports` handles more than just `exports`. It takes in the entire `package.json` object to handle resolving `.` and [self-references](https://nodejs.org/api/packages.html#self-referencing-a-package-using-its-name). This package only accepts `exports`/`imports` maps from `package.json` and is scoped to only resolving what's defined in the maps.
-
-- `resolve.exports` accepts the full request (e.g. `foo/bar`), whereas this package only accepts the requested subpath (e.g. `bar`).
-
-- `resolve.exports` only returns the first result in a fallback array. This package returns an array of results for the user to decide how to handle it.
-
-- `resolve.exports` supports [subpath folder mapping](https://nodejs.org/docs/latest-v16.x/api/packages.html#subpath-folder-mappings) (deprecated in Node.js v16 & removed in v17) but seems to [have a bug](https://github.com/lukeed/resolve.exports/issues/7). This package does not support subpath folder mapping because Node.js has removed it in favor of using subpath patterns.
-
-- Neither resolvers rely on a file-system
-
-This package also addresses many of the bugs in `resolve.exports`, demonstrated in [this test](/tests/exports/compare-resolve.exports.ts).
-
-
 ## Related
 
 ### [pkg-entry-points](https://github.com/privatenumber/pkg-entry-points)
