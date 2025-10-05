@@ -39,6 +39,9 @@
 			"default": "./dist/index.mjs"
 		}
 	},
+	"engines": {
+		"node": ">=12.20.0"
+	},
 	"packageManager": "pnpm@10.18.0",
 	"scripts": {
 		"build": "pkgroll --target=node12.19 --minify",
