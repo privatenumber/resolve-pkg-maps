@@ -1,10 +1,10 @@
 let firstCall = true;
 
-export async function resolve(
+export const resolve = async (
 	specifier,
 	context,
 	nextResolve,
-) {
+) => {
 	// Remove default conditions
 	context.conditions = context.conditions.slice(3);
 
@@ -17,4 +17,4 @@ export async function resolve(
 	}
 
 	return resolved;
-}
+};

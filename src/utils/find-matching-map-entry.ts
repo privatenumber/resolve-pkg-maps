@@ -16,10 +16,10 @@ const hasHigherSpecificity = (
 	);
 };
 
-export function findMatchingPath(
+export const findMatchingPath = (
 	pathConditions: PathConditions,
 	request: string,
-) {
+) => {
 	if (
 		!request.includes(STAR)
 		&& pathConditions.hasOwnProperty(request)
@@ -58,4 +58,4 @@ export function findMatchingPath(
 	}
 
 	return [pathMatch, starMatch];
-}
+};

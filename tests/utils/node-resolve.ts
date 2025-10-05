@@ -10,11 +10,11 @@ const packagePath = 'node_modules/package/';
 
 const loaderWarning = 'to show where the warning was created)';
 
-export async function nodeResolve(
+export const nodeResolve = async (
 	files: FileTree,
 	request: string,
 	conditions: readonly string[],
-) {
+) => {
 	const fixture = await createFixture({
 		...files,
 		'resolve.mjs': `import '${request}'`,
@@ -50,11 +50,11 @@ export async function nodeResolve(
 			'.',
 		);
 	}
-}
+};
 
-function normalizeExports(
+const normalizeExports = (
 	exports: PathConditions,
-): PathConditionsMap {
+): PathConditionsMap => {
 	if (
 		!exports
 		|| typeof exports === 'string'
@@ -71,7 +71,7 @@ function normalizeExports(
 	}
 
 	return exports;
-}
+};
 
 const getMapPaths = (
 	exports: PathConditions | null,
@@ -91,12 +91,12 @@ const getMapPaths = (
 	).flatMap(getMapPaths);
 };
 
-export async function nodeResolveExports(
+export const nodeResolveExports = async (
 	exports: PathConditions,
 	request: string,
 	conditions: readonly string[],
 	files?: FileTree,
-) {
+) => {
 	if (!files) {
 		// Generate files from export map
 		files = Object.fromEntries(
@@ -122,14 +122,14 @@ export async function nodeResolveExports(
 	if (resolved) {
 		return resolved.replace(packagePath, '');
 	}
-}
+};
 
-export async function nodeResolveImports(
+export const nodeResolveImports = async (
 	imports: PathConditionsMap,
 	request: string,
 	conditions: readonly string[],
 	files?: FileTree,
-) {
+) => {
 	if (!files) {
 		// Generate files from import map
 		files = Object.fromEntries(
@@ -145,4 +145,4 @@ export async function nodeResolveImports(
 		request,
 		conditions,
 	);
-}
+};

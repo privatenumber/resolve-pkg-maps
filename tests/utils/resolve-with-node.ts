@@ -1,5 +1,5 @@
 import { expect } from 'manten';
-import { type FileTree } from 'fs-fixture';
+import type { FileTree } from 'fs-fixture';
 import { nodeResolveExports } from './node-resolve.js';
 import { resolveExports, type PathConditions } from '#resolve-pkg-maps';
 
@@ -10,7 +10,7 @@ type AssertionBase = {
 	disableNodeCheck?: boolean;
 };
 
-export async function resolveExportsWithNode({
+export const resolveExportsWithNode = async ({
 	exports,
 	files,
 	assertions,
@@ -20,7 +20,7 @@ export async function resolveExportsWithNode({
 	files?: FileTree;
 
 	assertions: ((AssertionBase & { output: string[] }) | (AssertionBase & { error: string }))[];
-}) {
+}) => {
 	for (const assertion of assertions) {
 		const { request, conditions, debug } = assertion;
 		const error = 'error' in assertion ? assertion.error : undefined;
@@ -79,4 +79,4 @@ export async function resolveExportsWithNode({
 
 		expect(resolvedNode).toBe(resolved[0]);
 	}
-}
+};

@@ -50,7 +50,7 @@ export const resolveConditions = (
 
 		return [
 			asterisk
-				? pathConditions.replace(/\*/g, asterisk)
+				? pathConditions.replaceAll('*', asterisk)
 				: pathConditions,
 		];
 	}

@@ -26,8 +26,8 @@ _utils/package.json_
     "exports": {
         "./reverse": {
             "require": "./file.cjs",
-            "default": "./file.mjs"
-        }
+            "default": "./file.mjs",
+        },
     },
     // ...
 }
@@ -57,8 +57,8 @@ _package.json_
     "imports": {
         "#supports-color": {
             "node": "./index.js",
-            "default": "./browser.js"
-        }
+            "default": "./browser.js",
+        },
     },
     // ...
 }
@@ -190,9 +190,9 @@ Not all conditions in the array need to be met to resolve the request. It just n
     "exports": {
         "./feature": [
             "./file.js",
-            "./fallback.js"
-        ]
-    }
+            "./fallback.js",
+        ],
+    },
 }
 ```
 
@@ -201,8 +201,11 @@ Node.js's implementation [picks the first valid path (without attempting to reso
 ```json5
 {
     "exports": {
-        "./core-polyfill": ["std:core-module", "./core-polyfill.js"]
-    }
+        "./core-polyfill": [
+            "std:core-module",
+            "./core-polyfill.js",
+        ],
+    },
 }
 ```
 
@@ -218,19 +221,27 @@ For example, given the following exports:
 ```json5
 {
     "exports": {
-        "./path": [{ "node": "./node.js" }, "./browser.js"]
-    }
+        "./path": [
+            { "node": "./node.js" },
+            "./browser.js",
+        ],
+    },
 }
 ```
 
 Resolving with condition `node`:
 ```json5
-["./node.js", "./browser.js"]
+[
+    "./node.js",
+    "./browser.js",
+]
 ```
 
 Resolving with condition `browser`:
 ```json5
-["./browser.js"]
+[
+    "./browser.js",
+]
 ```
 
 ## Related
