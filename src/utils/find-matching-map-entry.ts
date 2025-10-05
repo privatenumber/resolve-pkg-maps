@@ -22,7 +22,7 @@ export const findMatchingPath = (
 ) => {
 	if (
 		!request.includes(STAR)
-		&& pathConditions.hasOwnProperty(request)
+		&& Object.prototype.hasOwnProperty.call(pathConditions, request)
 	) {
 		return [request];
 	}

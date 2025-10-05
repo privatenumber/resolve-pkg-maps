@@ -11,24 +11,28 @@ import type { PathConditions, PathConditionsMap } from './types.js';
 
 const isConditionalObject = (
 	exportsMap: PathConditionsMap,
-) => Object.keys(exportsMap).reduce<boolean | undefined>(
-	(firstKey, key) => {
+) => {
+	let firstKey: boolean | undefined;
+	const keys = Object.keys(exportsMap);
+
+	for (const key of keys) {
 		const isKeyConditionalSugar = key === '' || key[0] !== '.';
 
 		if (
 			firstKey === undefined
 			|| firstKey === isKeyConditionalSugar
 		) {
-			return isKeyConditionalSugar;
+			firstKey = isKeyConditionalSugar;
+		} else {
+			throw createError(
+				ERR_INVALID_PACKAGE_CONFIG,
+				'"exports" cannot contain some keys starting with "." and some not',
+			);
 		}
+	}
 
-		throw createError(
-			ERR_INVALID_PACKAGE_CONFIG,
-			'"exports" cannot contain some keys starting with "." and some not',
-		);
-	},
-	undefined,
-);
+	return firstKey;
+};
 
 const hasProtocolPattern = /^\w+:/;
 

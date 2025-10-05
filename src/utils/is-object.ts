@@ -1,5 +1,5 @@
 export const isObject = (
-	object: any,
+	object: unknown,
 ): object is object => (
 	object !== null
 	&& typeof object === 'object'

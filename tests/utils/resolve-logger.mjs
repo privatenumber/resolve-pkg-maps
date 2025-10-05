@@ -13,7 +13,7 @@ export const resolve = async (
 	if (firstCall) {
 		firstCall = false;
 	} else {
-		console.log(resolved.url);
+		console.log(resolved.url); // eslint-disable-line no-console
 	}
 
 	return resolved;

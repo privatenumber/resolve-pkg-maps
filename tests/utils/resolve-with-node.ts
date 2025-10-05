@@ -32,6 +32,7 @@ export const resolveExportsWithNode = async ({
 			resolved = resolveExports(exports, request, conditions);
 		} catch (resolvedError) {
 			if (error) {
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				expect((resolvedError as any).message).toMatch(error);
 				continue;
 			}
@@ -55,6 +56,7 @@ export const resolveExportsWithNode = async ({
 			);
 		} catch (nodeError) {
 			if (error) {
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				expect((nodeError as any).message).toMatch(error);
 				continue;
 			}
@@ -63,7 +65,7 @@ export const resolveExportsWithNode = async ({
 		}
 
 		if (debug) {
-			console.log({
+			console.log({ // eslint-disable-line no-console
 				request,
 				conditions,
 				resolved,
